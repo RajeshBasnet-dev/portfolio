@@ -3,968 +3,339 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajesh Basnet | AI/ML Developer Portfolio</title>
-  <meta name="description" content="Rajesh Basnet - AI/ML Developer portfolio showcasing projects in deep learning, NLP, and financial simulations." />
+  <title>Rajesh Basnet | Machine Learning Engineer</title>
+  <meta name="description" content="Rajesh Basnet is a Machine Learning Engineer building practical AI systems with Python, NLP, and financial machine learning." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0A0F1E;
-      --bg-soft: rgba(16, 25, 49, 0.55);
-      --text: #E8EEFF;
-      --muted: #A9B3CC;
-      --primary: #2563EB;
-      --secondary: #06B6D4;
-      --glass-border: rgba(37, 99, 235, 0.45);
-      --glow: 0 0 28px rgba(37, 99, 235, 0.35);
-      --radius: 18px;
-      --transition: 0.3s ease;
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --max-width: 1080px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: "DM Sans", sans-serif;
-      background: var(--bg);
+      font-family: "Inter", sans-serif;
       color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-      cursor: none;
+      background: var(--bg);
+      line-height: 1.65;
     }
 
-    @media (max-width: 1024px), (pointer: coarse) {
-      body {
-        cursor: auto;
-      }
-      .cursor-dot {
-        display: none;
-      }
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    section {
-      padding: 96px 0;
-      position: relative;
-      z-index: 1;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(var(--max-width), 92%);
       margin: 0 auto;
-    }
-
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      z-index: 9999;
     }
 
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      background: rgba(10, 15, 30, 0.82);
-      border-bottom: 1px solid rgba(6, 182, 212, 0.15);
-      transition: var(--transition);
+      z-index: 100;
+      background: rgba(247, 248, 250, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
 
     .nav-wrap {
-      width: min(1140px, 94%);
-      margin: 0 auto;
+      height: 72px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
-      transition: var(--transition);
-    }
-
-    .navbar.shrink .nav-wrap {
-      padding: 10px 0;
+      justify-content: space-between;
     }
 
     .logo {
-      font-family: "Space Mono", monospace;
-      font-weight: 700;
-      color: var(--secondary);
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 1.05rem;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-weight: 500; }
+    .nav-links a:hover { color: var(--text); }
 
-    .nav-links a {
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 0.95rem;
-      position: relative;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-
-    .nav-links a.active::after,
-    .nav-links a:hover::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--secondary), var(--primary));
-      border-radius: 999px;
-    }
-
-    .nav-github {
-      padding: 9px 14px;
-      border: 1px solid var(--glass-border);
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.12);
-    }
-
-    .nav-toggle {
-      display: none;
-      background: transparent;
-      border: 0;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    section { padding: 88px 0; }
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      padding: 110px 0 90px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to bottom, #ffffff, #f7f8fa);
     }
 
-    #hero-canvas {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      opacity: 0.7;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-    }
-
-    .eyebrow {
-      font-family: "Space Mono", monospace;
-      color: var(--secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.82rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-family: "Space Mono", monospace;
-      font-weight: 700;
-      font-size: clamp(2.2rem, 6vw, 4.6rem);
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.6rem);
       line-height: 1.1;
-      margin-bottom: 16px;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
     }
 
-    .typewriter-line {
-      font-family: "Space Mono", monospace;
-      color: var(--primary);
-      font-size: clamp(1.1rem, 2.8vw, 1.8rem);
-      min-height: 2.2em;
-      margin-bottom: 12px;
-    }
-
-    .type-cursor {
-      display: inline-block;
-      width: 1ch;
-      animation: blink 0.8s steps(1) infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .hero-subline {
+    .hero h2 {
+      font-size: clamp(1.15rem, 3vw, 1.6rem);
       color: var(--muted);
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.06rem;
       margin-bottom: 30px;
     }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 12px;
-      padding: 12px 18px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: var(--transition);
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(130deg, var(--primary), #1f4ec7);
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--glow);
-    }
+    .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .btn-ghost { background: #fff; }
+    .btn-ghost:hover { background: #f8fafc; }
 
-    .btn-outline {
-      border-color: var(--glass-border);
-      background: rgba(37, 99, 235, 0.1);
-    }
-
-    .btn-outline:hover {
-      background: rgba(6, 182, 212, 0.2);
-      border-color: rgba(6, 182, 212, 0.7);
-    }
-
-    .section-title {
-      font-family: "Space Mono", monospace;
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      margin-bottom: 14px;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      margin-bottom: 34px;
-      max-width: 760px;
-    }
-
-    .glass {
-      background: var(--bg-soft);
-      border: 1px solid rgba(37, 99, 235, 0.24);
-      border-radius: var(--radius);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-    }
-
-    .about-bio,
-    .skills-box,
-    .timeline-card,
-    .contact-card,
-    .contact-form,
-    .project-card {
-      padding: 24px;
-    }
-
-    .about-bio p,
-    .skills-box p {
-      color: var(--muted);
-    }
-
-    .pill-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .pill {
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      color: #d3eeff;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(6, 182, 212, 0.08);
-      font-size: 0.84rem;
-      transition: var(--transition);
-    }
-
-    .pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 18px rgba(6, 182, 212, 0.28);
-      border-color: rgba(6, 182, 212, 0.7);
-    }
+    .section-head { margin-bottom: 26px; }
+    .section-head h3 { font-size: clamp(1.45rem, 3vw, 2rem); margin-bottom: 8px; }
+    .section-head p { color: var(--muted); max-width: 760px; }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
     }
 
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      transition: var(--transition);
-      position: relative;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
 
-    .project-card:hover {
-      border-color: rgba(37, 99, 235, 0.8);
-      box-shadow: var(--glow);
-      transform: translateY(-4px);
+    .project-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12); }
+
+    .project-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
+    .project-card p { color: var(--muted); margin-bottom: 12px; }
+
+    .project-meta { font-size: 0.92rem; margin-bottom: 14px; }
+    .project-meta strong { color: var(--text); }
+
+    .project-link {
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-block;
     }
 
-    .project-featured {
-      grid-column: 1 / -1;
-      border-color: rgba(255, 196, 72, 0.45);
-      background: linear-gradient(130deg, rgba(10, 15, 30, 0.78), rgba(37, 99, 235, 0.16));
-    }
-
-    .featured-badge {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: linear-gradient(130deg, #ffcf5a, #d59619);
-      color: #291c00;
-      font-weight: 800;
-      font-size: 0.72rem;
-      border-radius: 999px;
-      padding: 4px 10px;
-      letter-spacing: 0.05em;
-    }
-
-    .project-title {
-      font-family: "Space Mono", monospace;
-      font-size: 1.16rem;
-      margin-bottom: 10px;
-      padding-right: 95px;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .tag {
-      font-size: 0.76rem;
-      font-weight: 700;
-      padding: 4px 9px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .tag.blue {
-      background: rgba(37, 99, 235, 0.2);
-      color: #a8c4ff;
-      border: 1px solid rgba(37, 99, 235, 0.5);
-    }
-
-    .tag.cyan {
-      background: rgba(6, 182, 212, 0.18);
-      color: #9ceeff;
-      border: 1px solid rgba(6, 182, 212, 0.5);
-    }
-
-    .project-desc {
-      color: var(--muted);
-      margin-bottom: 16px;
-      flex-grow: 1;
-    }
-
-    .project-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-sm {
-      padding: 9px 12px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 700;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(6, 182, 212, 0.45);
-      color: #9beaff;
-    }
-
-    .timeline-grid {
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
     }
 
-    .timeline-item {
-      padding: 14px 0;
-      border-bottom: 1px dashed rgba(169, 179, 204, 0.25);
+    .skill-card h4 { margin-bottom: 8px; font-size: 1rem; }
+    .skill-card p { color: var(--muted); font-size: 0.95rem; }
+
+    .text-block {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
     }
 
-    .timeline-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+    .text-block p { color: var(--muted); margin-bottom: 14px; }
+    .text-block p:last-child { margin-bottom: 0; }
 
-    .timeline-item h4 {
-      font-size: 1rem;
-      margin-bottom: 3px;
-    }
-
-    .timeline-item p,
-    .timeline-item a {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .contact-intro {
-      margin-bottom: 24px;
-    }
-
-    .contact-grid {
+    .list-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
-    .contact-links {
-      display: grid;
-      gap: 12px;
-    }
+    .list-item h4 { font-size: 1rem; margin-bottom: 4px; }
+    .list-item p { color: var(--muted); font-size: 0.95rem; }
 
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      background: rgba(6, 182, 212, 0.08);
-      border: 1px solid rgba(6, 182, 212, 0.28);
-    }
+    .contact-list { display: grid; gap: 10px; }
+    .contact-list p { color: var(--muted); }
 
-    .contact-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
-    }
-
-    .contact-form label {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      color: #cfddff;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      border: 1px solid rgba(169, 179, 204, 0.3);
-      background: rgba(10, 15, 30, 0.7);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 11px 12px;
-      margin-bottom: 14px;
-      outline: none;
-      transition: var(--transition);
-      font-family: inherit;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: rgba(37, 99, 235, 0.85);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
-    }
-
-    .contact-form small {
-      color: #9dd8ff;
-      display: block;
-      margin-top: 10px;
-    }
-
-    .footer {
-      border-top: 1px solid rgba(169, 179, 204, 0.18);
-      padding: 24px 0 34px;
-      color: var(--muted);
+    footer {
+      padding: 28px 0 34px;
+      border-top: 1px solid var(--line);
       text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      background: #fff;
     }
 
-    .footer a {
-      color: #a4d9ff;
-      margin-left: 8px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: 0.45s ease;
-    }
-
-    .stagger.visible > * {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stagger.visible > *:nth-child(1) { transition-delay: 0.06s; }
-    .stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
-    .stagger.visible > *:nth-child(3) { transition-delay: 0.18s; }
-    .stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
-    .stagger.visible > *:nth-child(5) { transition-delay: 0.3s; }
-    .stagger.visible > *:nth-child(6) { transition-delay: 0.36s; }
-
-    .back-top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      border: 0;
-      border-radius: 12px;
-      padding: 10px 12px;
-      background: linear-gradient(130deg, var(--secondary), var(--primary));
-      color: #001429;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-      z-index: 999;
-    }
-
-    .back-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cursor-dot {
-      position: fixed;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(6,182,212,0.95) 0%, rgba(37,99,235,0.2) 70%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-      mix-blend-mode: screen;
-      transition: transform 0.08s linear;
-    }
-
-    @media (max-width: 900px) {
-      section { padding: 78px 0; }
-      .about-grid,
-      .timeline-grid,
-      .contact-grid { grid-template-columns: 1fr; }
-      .project-featured { grid-column: auto; }
-    }
-
-    @media (max-width: 767px) {
-      .nav-toggle { display: block; }
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 3%;
-        left: 3%;
-        background: rgba(10, 15, 30, 0.97);
-        border: 1px solid rgba(37, 99, 235, 0.3);
-        border-radius: 14px;
-        padding: 14px;
-        flex-direction: column;
-        align-items: flex-start;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .nav-links.open {
-        max-height: 420px;
-        opacity: 1;
-        pointer-events: auto;
-      }
-      h1 { margin-bottom: 12px; }
-      .project-title { padding-right: 0; }
-      .featured-badge {
-        position: static;
-        display: inline-flex;
-        margin-bottom: 10px;
-      }
+    @media (max-width: 760px) {
+      .nav-wrap { flex-direction: column; justify-content: center; height: auto; padding: 14px 0; gap: 10px; }
+      .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+      section { padding: 70px 0; }
+      .hero { padding-top: 76px; }
     }
   </style>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
-
-  <nav class="navbar" id="navbar">
-    <div class="nav-wrap">
-      <a class="logo" href="#home">RB//AI</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li><a class="nav-github" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+  <nav class="navbar">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home">Rajesh Basnet</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <header class="hero" id="home">
-    <canvas id="hero-canvas"></canvas>
-    <div class="container hero-content reveal">
-      <p class="eyebrow">AI/ML Developer · Python · Deep Learning</p>
+  <header id="home" class="hero">
+    <div class="container">
       <h1>RAJESH BASNET</h1>
-      <p class="typewriter-line"><span id="typewriterText"></span><span class="type-cursor">|</span></p>
-      <p class="hero-subline">Building real-world AI systems from Nepal 🇳🇵</p>
+      <h2>Machine Learning Engineer</h2>
+      <p>Building real-world AI systems with Python, deep learning, and financial machine learning.</p>
       <div class="cta-row">
-        <a href="#projects" class="btn btn-primary">🚀 View Projects</a>
-        <a href="https://github.com/RajeshBasnet-dev" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
   </header>
 
-  <section id="about" class="reveal">
+  <section id="projects">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-subtitle">Self-taught developer blending applied ML engineering with strong fundamentals in mathematics and statistics.</p>
-      <div class="about-grid">
-        <article class="glass about-bio">
-          <p>
-            Self-taught Python developer and BMS student focused on building practical AI/ML systems. Experienced in machine learning pipelines, financial simulations, NLP, and deep learning (DistilBERT/Transformers). Strong foundation in statistics and probability with a focus on real-world AI applications.
-          </p>
-        </article>
-        <aside class="glass skills-box stagger reveal" id="skillsBox">
-          <p>Core stack and toolset:</p>
-          <div class="pill-wrap">
-            <span class="pill">Python</span><span class="pill">PyTorch</span><span class="pill">DistilBERT</span>
-            <span class="pill">Transformers</span><span class="pill">Scikit-learn</span><span class="pill">XGBoost</span>
-            <span class="pill">TF-IDF</span><span class="pill">Cosine Similarity</span><span class="pill">Monte Carlo</span>
-            <span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">Matplotlib</span><span class="pill">Plotly</span>
-            <span class="pill">Streamlit</span><span class="pill">Django</span><span class="pill">REST APIs</span>
-            <span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">SQLite</span><span class="pill">SQL</span>
-          </div>
-        </aside>
+      <div class="section-head">
+        <h3>Projects</h3>
+        <p>Selected projects focused on practical AI implementation, strong model design, and deployment-ready engineering.</p>
       </div>
-    </div>
-  </section>
-
-  <section id="projects" class="reveal">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-subtitle">Selected AI, NLP, and financial machine learning systems built for practical, deployment-ready use.</p>
-      <div class="projects-grid stagger reveal">
-        <article class="glass project-card project-featured">
-          <span class="featured-badge">⭐ FEATURED</span>
-          <h3 class="project-title">Fake News Detection System</h3>
-          <div class="tag-row">
-            <span class="tag blue">Deep Learning</span><span class="tag cyan">NLP</span><span class="tag blue">Django</span><span class="tag cyan">DistilBERT</span>
-          </div>
-          <p class="project-desc">Full-stack Django web application for detecting fake vs real news using NLP and deep learning. Implements a dual-model pipeline with TF-IDF + Logistic Regression baseline and DistilBERT fine-tuning, plus explainability, REST APIs, and deployment-ready prediction logging.</p>
-          <div class="project-actions">
-            <a class="btn btn-primary btn-sm" href="https://github.com/RajeshBasnet-dev/-Fake-News-DetectionSystem" target="_blank" rel="noopener noreferrer">⭐ GitHub Repo</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
-          </div>
+      <div class="projects-grid">
+        <article class="card project-card">
+          <h4>Fake News Detection System</h4>
+          <p>Deep learning NLP system using DistilBERT and TF-IDF models to classify news as real or fake with an API-ready backend.</p>
+          <p class="project-meta"><strong>Technologies:</strong> Python, DistilBERT, Scikit-learn, Django</p>
+          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
         </article>
-
-        <article class="glass project-card">
-          <h3 class="project-title">MonteCarloXY — Portfolio Risk Simulation Engine</h3>
-          <div class="tag-row">
-            <span class="tag blue">Machine Learning</span><span class="tag cyan">Finance</span><span class="tag blue">Simulation</span>
-          </div>
-          <p class="project-desc">Vectorized Monte Carlo simulator generating 20,000+ portfolio scenarios in under 1 second. Includes VaR, CVaR, Sharpe Ratio, Max Drawdown, Random Forest drift estimation, and an automated pytest reliability suite.</p>
-          <div class="project-actions">
-            <a class="btn btn-primary btn-sm" href="https://github.com/RajeshBasnet-dev/MonteCarloXY" target="_blank" rel="noopener noreferrer">⭐ GitHub Repo</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
-          </div>
+        <article class="card project-card">
+          <h4>Financial Forecasting and Simulation Toolkit</h4>
+          <p>Machine learning and statistical modeling toolkit for analyzing financial trends, forecasting scenarios, and generating risk-aware insights.</p>
+          <p class="project-meta"><strong>Technologies:</strong> Python, XGBoost, Pandas, Plotly</p>
+          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
         </article>
-
-        <article class="glass project-card">
-          <h3 class="project-title">AlphaPredictor — Ensemble Stock Forecasting System</h3>
-          <div class="tag-row">
-            <span class="tag cyan">Ensemble ML</span><span class="tag blue">Time Series</span><span class="tag cyan">Finance</span>
-          </div>
-          <p class="project-desc">Ensemble pipeline combining Random Forest, XGBoost, and Linear Regression with time-series cross-validation and automated retraining. Generates 95% intervals via moving-block bootstrap and interactive visual dashboards.</p>
-          <div class="project-actions">
-            <a class="btn btn-primary btn-sm" href="https://github.com/RajeshBasnet-dev/AlphaPredictor" target="_blank" rel="noopener noreferrer">⭐ GitHub Repo</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
-          </div>
-        </article>
-
-        <article class="glass project-card">
-          <h3 class="project-title">GradVis AI — ML Algorithm Visualizer</h3>
-          <div class="tag-row">
-            <span class="tag blue">Deep Learning</span><span class="tag cyan">Visualization</span><span class="tag blue">From Scratch</span>
-          </div>
-          <p class="project-desc">Linear, Logistic, and Polynomial Regression implementations from scratch with hand-derived gradients. Interactive visualizer reveals optimization behavior, loss curves, decision boundaries, and step-by-step training flow.</p>
-          <div class="project-actions">
-            <a class="btn btn-primary btn-sm" href="https://github.com/RajeshBasnet-dev/GradVis-AI" target="_blank" rel="noopener noreferrer">⭐ GitHub Repo</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
-          </div>
-        </article>
-
-        <article class="glass project-card">
-          <h3 class="project-title">Hirely — AI Resume Screening Platform</h3>
-          <div class="tag-row">
-            <span class="tag cyan">NLP</span><span class="tag blue">Resume AI</span><span class="tag cyan">Python</span>
-          </div>
-          <p class="project-desc">NLP-based resume ranking engine with TF-IDF + cosine similarity skill scoring, candidate storage and ranking, and evaluation using Precision@K, Recall@K, and MRR for relevance-focused screening accuracy.</p>
-          <div class="project-actions">
-            <a class="btn btn-primary btn-sm" href="https://github.com/RajeshBasnet-dev/Hirely" target="_blank" rel="noopener noreferrer">⭐ GitHub Repo</a>
-            <a class="btn btn-ghost btn-sm" href="#" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
-          </div>
+        <article class="card project-card">
+          <h4>NLP Document Intelligence Pipeline</h4>
+          <p>End-to-end NLP pipeline for text cleaning, feature engineering, and transformer-based classification for practical business use cases.</p>
+          <p class="project-meta"><strong>Technologies:</strong> Python, Transformers, PyTorch, REST APIs</p>
+          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="education" class="reveal">
+  <section id="skills">
     <div class="container">
-      <h2 class="section-title">Education & Learning</h2>
-      <div class="timeline-grid stagger reveal">
-        <article class="glass timeline-card">
-          <h3>Education</h3>
-          <div class="timeline-item">
-            <h4>🎓 Bachelor of Management Studies (BMS)</h4>
-            <p>Lumbini Banijya Campus, Nepal · 2023–Present</p>
-          </div>
-          <div class="timeline-item">
-            <h4>🎓 +2 Science (PCM)</h4>
-            <p>Kanti Secondary School, Nepal · Completed 2022</p>
-          </div>
+      <div class="section-head">
+        <h3>Skills</h3>
+        <p>Core tools and technologies used to design, train, evaluate, and deploy machine learning systems.</p>
+      </div>
+      <div class="skills-grid">
+        <article class="card skill-card">
+          <h4>Machine Learning</h4>
+          <p>PyTorch, Scikit-learn, XGBoost, Transformers, DistilBERT</p>
         </article>
-        <article class="glass timeline-card">
-          <h3>Additional Learning</h3>
-          <div class="timeline-item">
-            <h4>📘 Practical Deep Learning for Coders — fast.ai</h4>
-            <a href="https://course.fast.ai" target="_blank" rel="noopener noreferrer">https://course.fast.ai</a>
-          </div>
-          <div class="timeline-item"><h4>📘 Statistics & Probability — Khan Academy</h4></div>
-          <div class="timeline-item"><h4>📘 Differential & Integral Calculus — Khan Academy</h4></div>
-          <div class="timeline-item"><h4>📘 Django Web Development — Mindrisers Institute</h4></div>
+        <article class="card skill-card">
+          <h4>Data Science</h4>
+          <p>NumPy, Pandas, Matplotlib, Plotly</p>
+        </article>
+        <article class="card skill-card">
+          <h4>Backend &amp; Deployment</h4>
+          <p>Django, REST APIs, Streamlit</p>
+        </article>
+        <article class="card skill-card">
+          <h4>Tools</h4>
+          <p>Git, GitHub, SQL, SQLite</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="reveal">
+  <section id="about">
     <div class="container">
-      <h2 class="section-title">Let's Build Something Together</h2>
-      <p class="section-subtitle contact-intro">Open to AI/ML opportunities, collaborations, and the Fusemachines AI Fellowship.</p>
-      <div class="contact-grid">
-        <article class="glass contact-card">
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:basnetrajesh245@gmail.com"><span>📧</span><span><strong>Email</strong><br />basnetrajesh245@gmail.com</span></a>
-            <a class="contact-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer"><span>🐙</span><span><strong>GitHub</strong><br />github.com/RajeshBasnet-dev</span></a>
-            <div class="contact-link"><span>📍</span><span><strong>Location</strong><br />Tamghas, Gulmi, Nepal 🇳🇵</span></div>
-          </div>
+      <div class="section-head">
+        <h3>About</h3>
+      </div>
+      <article class="text-block">
+        <p>I am a self-taught AI/ML engineer focused on building practical systems that solve real-world problems. My work is grounded in production-minded development, model clarity, and measurable outcomes.</p>
+        <p>I have a strong foundation in statistics and mathematics, which helps me design reliable experiments, evaluate models critically, and make informed engineering decisions.</p>
+        <p>My experience includes machine learning pipelines, NLP applications, and financial machine learning projects, with a continued focus on delivering impactful AI solutions.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-head">
+        <h3>Education</h3>
+      </div>
+      <div class="list-grid">
+        <article class="card list-item">
+          <h4>Bachelor of Management Studies (BMS)</h4>
+          <p>Lumbini Banijya Campus — 2023–Present</p>
         </article>
-
-        <form class="glass contact-form" onsubmit="event.preventDefault(); alert('Thanks for your message! This frontend form is ready for backend integration.');">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Your email" required />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
-
-          <button class="btn btn-primary" type="submit">Send Message →</button>
-          <small>Currently available for opportunities</small>
-        </form>
+        <article class="card list-item">
+          <h4>+2 Science (Physics, Chemistry, Mathematics)</h4>
+          <p>Kanti Secondary School — Completed 2022</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
+  <section id="development">
     <div class="container">
-      Built with ❤️ in Nepal 🇳🇵 · Rajesh Basnet · 2025
-      <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🐙</a>
+      <div class="section-head">
+        <h3>Professional Development</h3>
+      </div>
+      <div class="list-grid">
+        <article class="card list-item"><h4>Practical Deep Learning for Coders</h4><p>fast.ai</p></article>
+        <article class="card list-item"><h4>Statistics &amp; Probability</h4><p>Khan Academy</p></article>
+        <article class="card list-item"><h4>Calculus</h4><p>Khan Academy</p></article>
+        <article class="card list-item"><h4>Django Web Development</h4><p>Mindrisers Institute</p></article>
+      </div>
     </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h3>Contact</h3>
+      </div>
+      <article class="text-block contact-list">
+        <p><strong>Email:</strong> basnetrajesh245@gmail.com</p>
+        <p><strong>GitHub:</strong> github.com/RajeshBasnet-dev</p>
+        <p><strong>Location:</strong> Nepal</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2025 Rajesh Basnet</div>
   </footer>
-
-  <button class="back-top" id="backTop" aria-label="Back to top">↑ Top</button>
-
-  <script>
-    const roles = ["Python Developer", "ML Engineer", "AI Builder", "Deep Learning Enthusiast", "Problem Solver"];
-    const typewriterText = document.getElementById("typewriterText");
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeLoop() {
-      const currentRole = roles[roleIndex];
-      typewriterText.textContent = currentRole.slice(0, charIndex);
-
-      if (!isDeleting && charIndex < currentRole.length) {
-        charIndex++;
-        setTimeout(typeLoop, 80);
-      } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(typeLoop, 45);
-      } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) roleIndex = (roleIndex + 1) % roles.length;
-        setTimeout(typeLoop, isDeleting ? 1100 : 260);
-      }
-    }
-    typeLoop();
-
-    const navbar = document.getElementById("navbar");
-    const progressBar = document.getElementById("progressBar");
-    const backTop = document.getElementById("backTop");
-
-    function onScrollUI() {
-      const scrolled = window.scrollY;
-      navbar.classList.toggle("shrink", scrolled > 80);
-      backTop.classList.toggle("show", scrolled > 400);
-
-      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = docHeight > 0 ? (scrolled / docHeight) * 100 : 0;
-      progressBar.style.width = `${progress}%`;
-    }
-
-    window.addEventListener("scroll", onScrollUI);
-    onScrollUI();
-
-    backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-    navToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-
-    document.querySelectorAll(".nav-link").forEach(link => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
-    });
-
-    const sections = [...document.querySelectorAll("section, header.hero")];
-    const navAnchors = [...document.querySelectorAll(".nav-link")];
-
-    const activeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
-      });
-    }, { threshold: 0.5 });
-
-    sections.forEach(sec => activeObserver.observe(sec));
-
-    const revealEls = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          if (entry.target.classList.contains("stagger")) {
-            entry.target.classList.add("visible");
-          }
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.16 });
-
-    revealEls.forEach(el => revealObserver.observe(el));
-
-    const cursorDot = document.getElementById("cursorDot");
-    window.addEventListener("mousemove", (e) => {
-      cursorDot.style.left = `${e.clientX}px`;
-      cursorDot.style.top = `${e.clientY}px`;
-    });
-
-    const canvas = document.getElementById("hero-canvas");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      initParticles();
-    }
-
-    function initParticles() {
-      const count = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        size: Math.random() * 1.8 + 0.8
-      }));
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(107, 175, 255, 0.8)";
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 110) {
-            const alpha = 1 - dist / 110;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha * 0.35})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(drawParticles);
-    }
-
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-    drawParticles();
-  </script>
 </body>
 </html>
