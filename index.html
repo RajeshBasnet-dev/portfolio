@@ -3,339 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rajesh Basnet - Machine Learning Engineer portfolio focused on practical AI systems, NLP, and financial machine learning." />
   <title>Rajesh Basnet | Machine Learning Engineer</title>
-  <meta name="description" content="Rajesh Basnet is a Machine Learning Engineer building practical AI systems with Python, NLP, and financial machine learning." />
+
+  <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --primary: #1d4ed8;
-      --primary-soft: #dbeafe;
-      --max-width: 1080px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-    }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Inter", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(var(--max-width), 92%);
-      margin: 0 auto;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(247, 248, 250, 0.9);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-wrap {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      font-size: 1.05rem;
-    }
-
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { color: var(--muted); font-weight: 500; }
-    .nav-links a:hover { color: var(--text); }
-
-    section { padding: 88px 0; }
-
-    .hero {
-      padding: 110px 0 90px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(to bottom, #ffffff, #f7f8fa);
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 3.6rem);
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      margin-bottom: 8px;
-    }
-
-    .hero h2 {
-      font-size: clamp(1.15rem, 3vw, 1.6rem);
-      color: var(--muted);
-      font-weight: 600;
-      margin-bottom: 22px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.06rem;
-      margin-bottom: 30px;
-    }
-
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    .btn {
-      border-radius: 10px;
-      padding: 11px 16px;
-      font-weight: 600;
-      border: 1px solid var(--line);
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
-    .btn-ghost { background: #fff; }
-    .btn-ghost:hover { background: #f8fafc; }
-
-    .section-head { margin-bottom: 26px; }
-    .section-head h3 { font-size: clamp(1.45rem, 3vw, 2rem); margin-bottom: 8px; }
-    .section-head p { color: var(--muted); max-width: 760px; }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-
-    .project-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12); }
-
-    .project-card h4 { font-size: 1.1rem; margin-bottom: 10px; }
-    .project-card p { color: var(--muted); margin-bottom: 12px; }
-
-    .project-meta { font-size: 0.92rem; margin-bottom: 14px; }
-    .project-meta strong { color: var(--text); }
-
-    .project-link {
-      color: var(--primary);
-      font-weight: 600;
-      display: inline-block;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
-    .skill-card h4 { margin-bottom: 8px; font-size: 1rem; }
-    .skill-card p { color: var(--muted); font-size: 0.95rem; }
-
-    .text-block {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    .text-block p { color: var(--muted); margin-bottom: 14px; }
-    .text-block p:last-child { margin-bottom: 0; }
-
-    .list-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .list-item h4 { font-size: 1rem; margin-bottom: 4px; }
-    .list-item p { color: var(--muted); font-size: 0.95rem; }
-
-    .contact-list { display: grid; gap: 10px; }
-    .contact-list p { color: var(--muted); }
-
-    footer {
-      padding: 28px 0 34px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-      background: #fff;
-    }
-
-    @media (max-width: 760px) {
-      .nav-wrap { flex-direction: column; justify-content: center; height: auto; padding: 14px 0; gap: 10px; }
-      .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
-      section { padding: 70px 0; }
-      .hero { padding-top: 76px; }
-    }
-  </style>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container nav-wrap">
-      <a class="logo" href="#home">Rajesh Basnet</a>
-      <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Sticky Navigation -->
+  <header class="site-header">
+    <nav class="container navbar" aria-label="Main navigation">
+      <a href="#home" class="logo">RAJESH BASNET</a>
 
-  <header id="home" class="hero">
-    <div class="container">
-      <h1>RAJESH BASNET</h1>
-      <h2>Machine Learning Engineer</h2>
-      <p>Building real-world AI systems with Python, deep learning, and financial machine learning.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#projects">View Projects</a>
-        <a class="btn btn-ghost" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="nav-link nav-github">GitHub</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="projects">
-    <div class="container">
-      <div class="section-head">
-        <h3>Projects</h3>
-        <p>Selected projects focused on practical AI implementation, strong model design, and deployment-ready engineering.</p>
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+      <div class="container reveal">
+        <p class="hero-kicker">Machine Learning Engineer</p>
+        <h1>RAJESH BASNET</h1>
+        <h2>Machine Learning Engineer</h2>
+        <p class="hero-description">
+          Building real-world AI systems using Python, deep learning, and financial machine learning.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+        </div>
       </div>
-      <div class="projects-grid">
-        <article class="card project-card">
-          <h4>Fake News Detection System</h4>
-          <p>Deep learning NLP system using DistilBERT and TF-IDF models to classify news as real or fake with an API-ready backend.</p>
-          <p class="project-meta"><strong>Technologies:</strong> Python, DistilBERT, Scikit-learn, Django</p>
-          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </article>
-        <article class="card project-card">
-          <h4>Financial Forecasting and Simulation Toolkit</h4>
-          <p>Machine learning and statistical modeling toolkit for analyzing financial trends, forecasting scenarios, and generating risk-aware insights.</p>
-          <p class="project-meta"><strong>Technologies:</strong> Python, XGBoost, Pandas, Plotly</p>
-          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </article>
-        <article class="card project-card">
-          <h4>NLP Document Intelligence Pipeline</h4>
-          <p>End-to-end NLP pipeline for text cleaning, feature engineering, and transformer-based classification for practical business use cases.</p>
-          <p class="project-meta"><strong>Technologies:</strong> Python, Transformers, PyTorch, REST APIs</p>
-          <a class="project-link" href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </article>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills">
-    <div class="container">
-      <div class="section-head">
-        <h3>Skills</h3>
-        <p>Core tools and technologies used to design, train, evaluate, and deploy machine learning systems.</p>
-      </div>
-      <div class="skills-grid">
-        <article class="card skill-card">
-          <h4>Machine Learning</h4>
-          <p>PyTorch, Scikit-learn, XGBoost, Transformers, DistilBERT</p>
-        </article>
-        <article class="card skill-card">
-          <h4>Data Science</h4>
-          <p>NumPy, Pandas, Matplotlib, Plotly</p>
-        </article>
-        <article class="card skill-card">
-          <h4>Backend &amp; Deployment</h4>
-          <p>Django, REST APIs, Streamlit</p>
-        </article>
-        <article class="card skill-card">
-          <h4>Tools</h4>
-          <p>Git, GitHub, SQL, SQLite</p>
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container reveal">
+        <h3 class="section-title">About</h3>
+        <article class="panel about-text">
+          <p>
+            Self-taught Machine Learning Engineer and Bachelor of Management Studies student focused on building real-world AI systems.
+          </p>
+          <p>
+            My work spans natural language processing, financial machine learning, and deep learning pipelines using Python and PyTorch.
+          </p>
+          <p>
+            I focus on building practical ML systems including prediction engines, NLP applications, and simulation-based financial models.
+          </p>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about">
-    <div class="container">
-      <div class="section-head">
-        <h3>About</h3>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="container reveal">
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-grid">
+          <article class="panel skill-card">
+            <h4>Machine Learning</h4>
+            <p>PyTorch, Scikit-learn, XGBoost, Transformers, DistilBERT</p>
+          </article>
+          <article class="panel skill-card">
+            <h4>Data Science</h4>
+            <p>NumPy, Pandas, Matplotlib, Plotly</p>
+          </article>
+          <article class="panel skill-card">
+            <h4>Backend &amp; Deployment</h4>
+            <p>Django, REST APIs, Streamlit</p>
+          </article>
+          <article class="panel skill-card">
+            <h4>Tools</h4>
+            <p>Git, GitHub, SQL, SQLite</p>
+          </article>
+        </div>
       </div>
-      <article class="text-block">
-        <p>I am a self-taught AI/ML engineer focused on building practical systems that solve real-world problems. My work is grounded in production-minded development, model clarity, and measurable outcomes.</p>
-        <p>I have a strong foundation in statistics and mathematics, which helps me design reliable experiments, evaluate models critically, and make informed engineering decisions.</p>
-        <p>My experience includes machine learning pipelines, NLP applications, and financial machine learning projects, with a continued focus on delivering impactful AI solutions.</p>
-      </article>
-    </div>
-  </section>
+    </section>
 
-  <section id="education">
-    <div class="container">
-      <div class="section-head">
-        <h3>Education</h3>
-      </div>
-      <div class="list-grid">
-        <article class="card list-item">
-          <h4>Bachelor of Management Studies (BMS)</h4>
-          <p>Lumbini Banijya Campus — 2023–Present</p>
-        </article>
-        <article class="card list-item">
-          <h4>+2 Science (Physics, Chemistry, Mathematics)</h4>
-          <p>Kanti Secondary School — Completed 2022</p>
-        </article>
-      </div>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container reveal">
+        <h3 class="section-title">Projects</h3>
+        <div class="projects-grid">
+          <article class="panel project-card">
+            <h4>Fake News Detection System</h4>
+            <p>Deep learning NLP system using DistilBERT and TF-IDF to classify news articles.</p>
+            <p class="stack"><strong>Tech:</strong> Python, DistilBERT, TF-IDF, Django</p>
+            <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-small">GitHub</a>
+          </article>
 
-  <section id="development">
-    <div class="container">
-      <div class="section-head">
-        <h3>Professional Development</h3>
-      </div>
-      <div class="list-grid">
-        <article class="card list-item"><h4>Practical Deep Learning for Coders</h4><p>fast.ai</p></article>
-        <article class="card list-item"><h4>Statistics &amp; Probability</h4><p>Khan Academy</p></article>
-        <article class="card list-item"><h4>Calculus</h4><p>Khan Academy</p></article>
-        <article class="card list-item"><h4>Django Web Development</h4><p>Mindrisers Institute</p></article>
-      </div>
-    </div>
-  </section>
+          <article class="panel project-card">
+            <h4>MonteCarloXY — Portfolio Risk Simulation</h4>
+            <p>Vectorized Monte Carlo simulator for financial portfolio risk analysis.</p>
+            <p class="stack"><strong>Tech:</strong> Python, NumPy, Pandas, Plotly</p>
+            <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-small">GitHub</a>
+          </article>
 
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <h3>Contact</h3>
-      </div>
-      <article class="text-block contact-list">
-        <p><strong>Email:</strong> basnetrajesh245@gmail.com</p>
-        <p><strong>GitHub:</strong> github.com/RajeshBasnet-dev</p>
-        <p><strong>Location:</strong> Nepal</p>
-      </article>
-    </div>
-  </section>
+          <article class="panel project-card">
+            <h4>AlphaPredictor — Stock Forecasting System</h4>
+            <p>Ensemble ML model combining Random Forest, XGBoost, and Linear Regression.</p>
+            <p class="stack"><strong>Tech:</strong> Python, Scikit-learn, XGBoost, Pandas</p>
+            <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-small">GitHub</a>
+          </article>
 
-  <footer>
-    <div class="container">© 2025 Rajesh Basnet</div>
+          <article class="panel project-card">
+            <h4>GradVis AI — ML Algorithm Visualizer</h4>
+            <p>Interactive visualization of regression algorithms and gradient descent.</p>
+            <p class="stack"><strong>Tech:</strong> Python, Streamlit, Matplotlib, NumPy</p>
+            <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-small">GitHub</a>
+          </article>
+
+          <article class="panel project-card">
+            <h4>Hirely — AI Resume Screening Platform</h4>
+            <p>NLP-based resume ranking system using TF-IDF and cosine similarity.</p>
+            <p class="stack"><strong>Tech:</strong> Python, Scikit-learn, NLP, REST APIs</p>
+            <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer" class="btn btn-small">GitHub</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+      <div class="container reveal">
+        <h3 class="section-title">Education</h3>
+        <div class="education-grid">
+          <article class="panel">
+            <h4>Bachelor of Management Studies (BMS)</h4>
+            <p>Lumbini Banijya Campus — 2023–Present</p>
+          </article>
+          <article class="panel">
+            <h4>+2 Science (Physics, Chemistry, Mathematics)</h4>
+            <p>Kanti Secondary School — Completed 2022</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container reveal">
+        <h3 class="section-title">Contact</h3>
+        <div class="contact-grid">
+          <article class="panel contact-info">
+            <p><strong>Email:</strong> <a href="mailto:basnetrajesh245@gmail.com">basnetrajesh245@gmail.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/RajeshBasnet-dev" target="_blank" rel="noopener noreferrer">github.com/RajeshBasnet-dev</a></p>
+            <p><strong>Location:</strong> Nepal</p>
+          </article>
+
+          <!-- Contact Form UI (no backend integration) -->
+          <form class="panel contact-form" onsubmit="event.preventDefault();">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Your email" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Rajesh Basnet</p>
+    </div>
   </footer>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
